@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 function getdata(searchInput){
 	
-	if(searchInput === undefined || searchInput === ''){
+	if(searchInput === undefined || searchInput === '') {
 
 		var query = request.getAll;
 		document.getElementById("uInput").value = '';
@@ -38,7 +38,7 @@ function getdata(searchInput){
 }
 
 
-function handelResult(result){
+function handelResult(result) {
 	result = JSON.parse(result);
 	
 	if(!result.recepten){
@@ -50,18 +50,16 @@ function handelResult(result){
 }
 
 
-function openRecipe(recipeIndex){
-	
+function openRecipe(recipeIndex) {
 	$('#content-info').html('');
 	$('body').css("overflow","hidden");
 	$('#nav').html('<a href="javascript:closeAside()">&#10094;</a>');
 	$('aside').width('100%');
 	getdata(recipeIndex);
-	
 }
 
 
-function closeAside(){
+function closeAside() {
 	$('#nav').html('');
 	$('aside').width('0');
 	$('body').css("overflow","auto");
@@ -70,7 +68,7 @@ function closeAside(){
 }
 
 
-function buildList(data){
+function buildList(data) {
 	window.scrollTo(0, 0);
 	var resultList = data.recepten;
 	var outputList = "<ul>";
@@ -88,7 +86,7 @@ function buildList(data){
 		return 0;
 	});
 		
-	for (var i = 0; i < resultList.length; i++){
+	for (var i = 0; i < resultList.length; i++) {
 			
 		outputList += '<li><a href="javascript:openRecipe('+ resultList[i][0] +')">'+
 					resultList[i][1] + '</br>'+
@@ -100,23 +98,20 @@ function buildList(data){
 }
 
 
-function displayRecipe(data){
-	
-	
+function displayRecipe(data) {	
 	var comment = '';
 	var ingredients = '<ul>';
 	var discription = '<p>' + data.discription + '</p></br></br></br>';
 	
-	if(data.comment !== ''){
+	if(data.comment !== '') {
 		comment += '<p>' + data.comment + '</p>';
 	}
 		
-	for (var i = 0; i < data.ingredients.length; i++){
+	for (var i = 0; i < data.ingredients.length; i++) {
 		ingredients += '<li>' + data.ingredients[i] + '</li>';
 	}
 	
 	ingredients += '</ul>';
-	
 	
 	var recipe = comment +	ingredients + discription;
 	
